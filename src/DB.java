@@ -18,7 +18,7 @@ public class DB {
 		return rs;
 	}
 
-	public Connection getConnection() {
+	private Connection getConnection() {
 		Connection connection = null;
 		try {
 			Class.forName("org.postgresql.Driver");

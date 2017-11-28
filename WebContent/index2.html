@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sample Login Page</title>
+</head>
+<body>
+	<form action="/action_page.php">
+		Email:<br> <input type="email" id="email" placeholder="email">
+		<br> Password:<br> <input type="password" id="password"
+			placeholder=""> <br>
+	</form>
+	<br>
+	<button id='submit'>Submit</button>
+
+</body>
+<script type="text/javascript">
+	document.getElementById("submit").onclick = function() {
+		myFunction()
+	};
+
+	function myFunction() {
+		var params = "email=" + document.getElementById('email').value
+				+ "&password=" + document.getElementById('password').value;
+
+		var oReq = new XMLHttpRequest();
+		oReq.onreadystatechange = function() {
+			if (oReq.readyState == 4 && oReq.status == 200
+					&& oReq.responseText == 'success') {
+				window.location.href = "welcome.html";
+			}
+		}
+
+		oReq.open("POST",
+				"http://localhost:8080/MyDynamicWebProj/LoginController");
+		oReq.setRequestHeader("Content-type",
+				"application/x-www-form-urlencoded");
+		oReq.send(params);
+	}
+</script>
+</html>
+
